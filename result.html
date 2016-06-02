@@ -24,9 +24,9 @@
       <div class="g-col" v-bind:class="{'pass':gPenis.passing}" id="g-penis">
         <h2 v-if="gPenis.passing"> {{gPenis.rule}} 通過 <span class="glyphicon glyphicon-ok"></span></h2>
         <h2 v-else> {{gPenis.rule}} 不通過 <span class="glyphicon glyphicon-remove"></span></h2>
-        <h3>已完成:</h3>
+        <h3 v-if="gPenis.info.done">已完成</h3>
         <li  class="finish" v-bind:class="{'white':gPenis.passing}"  v-for="data in gPenis.info.done"> {{data.name}}</li>
-        <h3>未完成:</h3>
+        <h3 v-if="gPenis.info.undone">未完成</h3>
         <li v-for="data in gPenis.info.undone"> {{data.name}}</li>
       </div>
 
@@ -34,9 +34,9 @@
       <div class="g-col" v-bind:class="{'pass':gFuck.passing}" id="g-fuck">
         <h2 v-if="gFuck.passing"> {{gFuck.rule}} 通過 <span class="glyphicon glyphicon-ok"></span></h2>
         <h2 v-else> {{gFuck.rule}} 不通過 <span class="glyphicon glyphicon-remove"></span></h2>
-        <h3>已完成:</h3>
+        <h3 v-if="gFuck.info.done">已完成</h3>
         <li class="finish" v-bind:class="{'white':gFuck.passing}" v-for="data in gFuck.info.done"> {{data.name}}</li>
-        <h3>未完成:</h3>
+        <h3 v-if="gFuck.info.undone">未完成</h3>
         <li v-for="data in gFuck.info.undone"> {{data.name}}</li>
       </div>
 

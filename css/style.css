@@ -2050,6 +2050,7 @@ body {
 .rec {
   height: 29px;
   background-color: white;
+  max-width: 100%;
 }
 
 @keyframes blinker {

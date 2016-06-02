@@ -27,6 +27,7 @@
 $(document).ready(function(){
   chrome.runtime.sendMessage({get: "secondscan"}, function(res) {
     var getdata = res.status
+    console.log(res.status)
     new Vue({
       el: '.container',
       data: {gPussy: getdata.專業學程門檻, gPenis: getdata.分類通識審查, gFuck: getdata.必修科目審查, gPorn: getdata.必修學分審查, gXxx: getdata.選修學分審查, gSex: getdata.總學分審查},

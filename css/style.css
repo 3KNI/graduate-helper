@@ -24,6 +24,15 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+.container .feedbacklink {
+  color: white;
+}
+
+.container .feedbacklink:hover {
+  color: #5cb85c;
+  text-decoration: none;
+}
+
 /* HTML5 display-role reset for older browsers */
 /* line 27, ../sass/_reset.scss */
 article, aside, details, figcaption, figure,

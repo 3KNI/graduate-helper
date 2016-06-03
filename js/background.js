@@ -93,7 +93,11 @@ chrome.runtime.onMessage.addListener(
         firstscan = ScanFormatter(post.firstScan)
         secondscan = $.extend( true, {}, firstscan )
         secondscan = undoneTesting(secondscan)
-        chrome.tabs.update(sender.tab.id, {url: "result.html"})
+        if(secondscan){
+          chrome.tabs.update(sender.tab.id, {url: "result.html"})
+        }else{
+          alert('畢業資料審查中，無法執行畢業助手。')
+        }
       }
     }
 })
@@ -185,26 +189,35 @@ function ScanFormatter (data){
 function undoneTesting(data){
   // chrome.tabs.update(sender.tab.id, {url: "result.html"})
   // Testing each 必修科目審查's item whether really undone
-  query = $.extend( true, [], data['必修科目審查'].info.undone)
-  $.each(query, function(index, value){
-    query[index].name = value.name.split(' ')[1]
-  })
-  $.each(query, function(index, value){
-    switch(value.name) {
-      case '外語能力檢定': // 01D112 外語能力檢定
-        chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/stud_lang_grad/stud_lang_grad.aspx?helper=1', active:false})
-        break
-      case '資訊基本能力檢核': // 01D12Q 資訊基本能力檢核
-        chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/InfoAbility/InfoAbility.aspx?helper=1', active:false})
-        break
-      case '專業證照': // 30D167 專業證照
-        chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/LicenseStudent/LicenseStudentPage.aspx?helper=1', active:false})
-        break
-      case '校外實習': // 30D1CD 校外實習
-        chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/Manager/Student_Intern_data.aspx?helper=1', active:false})
-        break
-    }
-  })
+  try{
 
-  return data
+    query = $.extend( true, [], data['必修科目審查'].info.undone)
+    $.each(query, function(index, value){
+      query[index].name = value.name.split(' ')[1]
+    })
+    $.each(query, function(index, value){
+      switch(value.name) {
+        case '外語能力檢定': // 01D112 外語能力檢定
+          chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/stud_lang_grad/stud_lang_grad.aspx?helper=1', active:false})
+          break
+        case '資訊基本能力檢核': // 01D12Q 資訊基本能力檢核
+          chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/InfoAbility/InfoAbility.aspx?helper=1', active:false})
+          break
+        case '專業證照': // 30D167 專業證照
+          chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/LicenseStudent/LicenseStudentPage.aspx?helper=1', active:false})
+          break
+        case '校外實習': // 30D1CD 校外實習
+          chrome.tabs.create({url: 'http://portal.stust.edu.tw/StudentPortfolio/Pages/Manager/Student_Intern_data.aspx?helper=1', active:false})
+          break
+      }
+    })
+
+    return data
+
+  }
+  catch(err){
+
+    return false
+
+  }
 }

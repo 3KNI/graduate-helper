@@ -3,7 +3,7 @@
 
   "name": "畢業預警助手",
   "description": "寶寶可以畢業，但是寶寶不說。",
-  "version": "1.2.2",
+  "version": "1.2.3",
 
   "browser_action": {
     "default_icon": "icon.png",

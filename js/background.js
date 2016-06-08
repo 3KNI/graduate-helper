@@ -160,11 +160,12 @@ function ScanFormatter (data){
 
       case "必修科目審查" :
         var sub = value.info.split('：')
+        var sub_tmp = []
         if(sub[0] == '時序表未完成'){
           $.each(sub[1].split(','),function(index, value){
-            sub[index]={ name: value.replace(/^\s+|\s+$/g,'') }
+            sub_tmp.push({ name: value.replace(/^\s+|\s+$/g,'') })
           })
-          data[index].info = {undone: sub}
+          data[index].info = {undone: sub_tmp}
         }
         break
 
@@ -193,7 +194,7 @@ function undoneTesting(data){
 
     query = $.extend( true, [], data['必修科目審查'].info.undone)
     $.each(query, function(index, value){
-      query[index].name = value.name.split(' ')[1]
+        query[index].name = value.name.split(' ')[1]
     })
     $.each(query, function(index, value){
       switch(value.name) {
@@ -216,7 +217,7 @@ function undoneTesting(data){
 
   }
   catch(err){
-
+    console.log(err)
     return false
 
   }

@@ -2,6 +2,7 @@
 
 這是一個基於Vue.js與Chrome extension(Chrome擴充功能)的擴充套件，協助南臺科技大學學生在查看畢業預警時，能更清楚的確認自己哪些門檻尚未通過。
 
+![graduate-helper demo img](https://i.imgur.com/SZQ55hc.png)
 ### [Demo](https://www.youtube.com/watch?v=zVl6b2dVthc)
 
 ## 如何安裝
